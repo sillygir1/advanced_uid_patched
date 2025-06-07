@@ -68,11 +68,6 @@ Build and flash
 bash./fbt launch_app APPSRC=applications_user/advanced_uid
 
 
-Method 2: FAP Installation
-
-Download the latest .fap file from Releases
-Copy the .fap file to your Flipper Zero's apps folder
-Navigate to Apps → NFC → Advanced UID Tool
 
 📖 Usage Guide
 🎮 Basic Operation
