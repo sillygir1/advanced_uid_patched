@@ -1,5 +1,5 @@
 # advanced_uid
-Advanced NFC UID Tool for Flipper Zero firmware MOMENTUM 
+Advanced NFC UID Tool for Flipper Zero firmware 
 A powerful NFC UID manipulation tool for Flipper Zero that allows you to emulate, increment, and fuzz NFC UIDs with advanced customization options.
 🚀 Features
 📱 Multiple NFC Technologies Support
@@ -39,7 +39,7 @@ Vibration Feedback - Haptic feedback for user actions
 
 📋 Requirements
 
-Flipper Zero with updated firmware
+Flipper Zero with updated firmware (only tested on Momentum yet)
 Compatible Firmware:
 
 Official Firmware
@@ -54,7 +54,7 @@ Other OFW-based firmwares
 Method 1: Build from Source
 
 Clone this repository
-bashgit clone https://github.com/yourusername/advanced-uid-tool.git
+bash git clone https://github.com/nocomp/advanced_uid.git
 cd advanced-uid-tool
 
 Copy to your Flipper firmware directory
