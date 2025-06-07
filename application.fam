@@ -1,0 +1,27 @@
+App(
+    appid="advanced_uid",
+    name="Advanced UID",
+    apptype=FlipperAppType.EXTERNAL,
+    entry_point="advanced_uid_app",
+    stack_size=4 * 1024,
+    fap_category="NFC",
+    fap_icon="icon.png",
+    fap_description="Advanced NFC UID emulation with incremental sequences",
+    fap_author="NoComp",
+    fap_version="1.0",
+    requires=[
+        "gui",
+        "input",
+        "notification",
+        "storage",
+        "furi",
+        "furi_hal",
+        "toolbox",
+    ],
+    cdefines=[
+        "FURI_HAL_NFC_VER_2",
+    ],
+    sources=[
+        "advanced_uid.c",
+    ],
+)
