@@ -3,12 +3,11 @@ Advanced NFC UID Tool for Flipper Zero firmware
 A powerful NFC UID manipulation tool for Flipper Zero that allows you to emulate, increment, and fuzz NFC UIDs with advanced customization options.
 🚀 Features
 📱 Multiple NFC Technologies Support
-<iframe width="315" height="560"
-src="https://www.youtube.com/embed/K4sCw61QOxc"
-title="YouTube video player"
-frameborder="0"
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-allowfullscreen></iframe>
+
+Quick demo
+https://www.youtube.com/embed/K4sCw61QOxc
+
+
 Mifare Classic 1K - Industry standard proximity cards
 Mifare Ultralight - Lightweight NFC tags
 NTAG213/215/216 - NFC Forum Type 2 tags
