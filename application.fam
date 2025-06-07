@@ -7,7 +7,7 @@ App(
     fap_category="NFC",
     fap_icon="icon.png",
     fap_description="Advanced NFC UID emulation with incremental sequences",
-    fap_author="NoComp",
+    fap_author="nocomp@pm.me",
     fap_version="1.0",
     requires=[
         "gui",
