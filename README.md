@@ -47,7 +47,6 @@ Contact: nocomp@gmail.com
 
 ⚡ Instant Activation - Delivered within 24 hours
 🔒 Secure License System - Tied to your Flipper's unique ID
-💫 Satisfaction Guaranteed - 30-day money-back guarantee
 🎯 Competitive Pricing - Starting from $29.99
 
 
