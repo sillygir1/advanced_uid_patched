@@ -1,3 +1,42 @@
+# Advanced UID Pro v2.0
+
+This repo contains the patched version of original application. Patch removes the license check completely. Read how i did it one paragraph lower!
+
+As the MIT license states, i can do whatever the hell i want with this software. Also, please don't create issues in this fork, i will not be able to fix this mess. The only person who can help you with problems with this app is it's original creator.
+
+Back to the important things. What did i do to save your script kiddie's wallet 10 euros? Actually, there were 2 versions. First one involved patching the return value of `verify_license_code` function, which worked, but it needed a dummy license file with a dummy key. Imagine if you needed to spend extra half a minute to put that into your flipper? Unthinkable. So i spend like an extra couple of hours (i'm new to this patching stuff) figuring out how to make scriptkiddying easier for y'all. Behold, my second best reverse-engineering project:
+- As we start going through the disassembly of the main function (keep in mind, it's not an actual code, just the ghidra's interpretation of the disassembly), there's a piece of code that starts with:
+```c
+  furi_record_open("storage");
+  uVar4 = file_stream_alloc();
+  iVar5 = file_stream_open(uVar4,"/ext/apps_data/advanced_uid_pro/license.txt",1);
+```
+- There are some interesting things after it too, let's check them.
+  ```c
+      iVar5 = verify_license_code(local_7c,__dest_00);
+      if (iVar5 == 0) {
+        pcVar3 = "Invalid License - Demo Mode Active";
+        __dest[0x8c] = '\0';
+        __dest[200] = '\0';
+      }
+      else {
+        pcVar3 = "Pro Mode - All Features Unlocked";
+        __dest[0x8c] = '\x01';
+        __dest[200] = '\x01';
+      }
+      strcpy(local_80,pcVar3);
+  ```
+- What do we see, a piece of code that sets flags if the license code is valid? Well duh, we just need to take these changes and apply them **instead** of the license check. Time to do some instruction patching. **Be careful to not change the total file size, as it can and will break everything.** We will replace the bytes, instead of adding new ones. For that, you need a hex editor. Also, i used ghidra 11.0 for decompilation of the `.fap` file. 
+- Returning to the file opening section. Forget it. We're rewrting it. What do we need? Set the flags (2 of them) and jump to the end of the license check section.
+- Let's take the first instruction for that function call, the one that puts format string address to the `r2` register. What do we do with it? Replace it with loading `0x1` into the `r0` register. Why `r0`? Idk, seems like a safe bet, as it's usually used for a return value i think? So, we replace `69 4a` right after the label with `01 20`, which stands for `movs r0, #0x1`, putting an immediate value `0x1` in the `r0` register. Wel'll need it later.
+- To the next instruction. We replace next 2 16-bit instructions with a 4-byte one. `84 f8 8c 00`, which stands for `strb.w r0,[r4,#0x8c]`. We put that `0x1` value into a memory address, calculated by adding `0x8c` to the struct address, stored in `r4`.
+- Next 2 instructions we replace with another long one. `84 f8 c8 00`, which means `strb.w r0,[r4,#0xc8]`, same thing as the previous one, but this time for another field of the struct.
+- To finish this off, we need to get the rest of the license section out of our way. How? Branching, of course. We once again rewrite next instruction, but this time with a short one. `68 e0`, meaning `b LAB_00014fdc`. Unconditional branch to the `LAB_00014fdc` label. Why `LAB_00014fdc`? This is the place where the section of the code right after license check is. It's conveniently labeled because there's an `if`/`else` statement right before it.
+- That's it! We have successfully made the app completely free to use, enjoy your script kiddy stuff if you're into it, i don't really care. I just wanted to feel like a smartass (i also condemn paid stuff in the open-source community, but that's unimportant).
+
+
+Original README.md is preserved below:
+---
 Advanced UID Pro v2.0
 The Ultimate NFC/RFID UID Manipulation Tool for Flipper Zero
 ![Screenshot-20250609-172751](https://github.com/user-attachments/assets/19de737e-cc20-4fff-b462-925ff2fc7671)
