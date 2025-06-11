@@ -6,11 +6,11 @@ As the MIT license states, i can do whatever the hell i want with this software.
 
 Back to the important things. What did i do to save your script kiddie's wallet 10 euros? Actually, there were 2 versions of the patch. First one involved patching the return value of `verify_license_code` function, which worked, but it needed a dummy license file with a dummy key. Imagine if you needed to spend extra half a minute to put that into your flipper? Unthinkable. So i spend like an extra couple of hours (i'm new to this patching stuff) figuring out how to make scriptkiddying easier for y'all. Behold, my second best reverse-engineering project:
 - As we start going through the disassembly of the main function (keep in mind, it's not an actual code, just the ghidra's interpretation of the disassembly), there's a piece of code that starts with:
-```c
-  furi_record_open("storage");
-  uVar4 = file_stream_alloc();
-  iVar5 = file_stream_open(uVar4,"/ext/apps_data/advanced_uid_pro/license.txt",1);
-```
+  ```c
+    furi_record_open("storage");
+    uVar4 = file_stream_alloc();
+    iVar5 = file_stream_open(uVar4,"/ext/apps_data/advanced_uid_pro/license.txt",1);
+  ```
 - There are some interesting things after it too, let's check them.
   ```c
       iVar5 = verify_license_code(local_7c,__dest_00);
