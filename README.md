@@ -3,7 +3,7 @@
 UPD: The original repository by [@nocomp](https://www.github.com/nocomp) was hidden/removed for some reason now.
 
 > [!WARNING]
-> I do not condone usage of this app for malicious stuff, pls don't do that. Only use it on stuff you legally own, don't get yourself into trouble for some spy kids action. I only did this project for fun.
+> I do not condone use of this app for malicious stuff, pls don't do that. Only use it on stuff you legally own, don't get yourself into trouble for some spy kids action. I only did this project for fun.
 
 This repo contains the patched version of original application. Patch removes the license check completely. Read how i did it one paragraph lower!
 
