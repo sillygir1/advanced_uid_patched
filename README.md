@@ -1,5 +1,7 @@
 # Advanced UID Pro v2.0
 
+UPD: The original repository by [@nocomp](https://www.github.com/nocomp) was hidden/removed for some reason now.
+
 This repo contains the patched version of original application. Patch removes the license check completely. Read how i did it one paragraph lower!
 
 As the MIT license states, i can do whatever the hell i want with this software. Also, please don't create issues in this fork, i will not be able to fix this mess. The only person who can help you with problems with this app is it's original creator.
